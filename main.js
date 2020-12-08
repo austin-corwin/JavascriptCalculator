@@ -1,25 +1,81 @@
 
+
 const calcButtons = document.querySelectorAll('button');
 calcButtons.forEach(calcButton => calcButton.addEventListener('click', function(e){
-    let buttonValue = calcButton.innerHTML;
     let currentOperand = document.querySelector('.current-operand');
+    let buttonValue = calcButton.innerHTML;
+    let currentNum = currentOperand.textContent;
 
     if (buttonValue == 'AC'){
         currentOperand.textContent = '';
 
-    } else if (buttonValue == 'DEL') {
-        currentOperandText = 
+    } else if (buttonValue == '=') {
+        currentOperand.textContent += buttonValue;
+        
+            let firstNum = currentNum.substr(0, currentNum.indexOf('+'));
+            let secondNum = currentNum.split('+');
 
-        currentOperand.textContent = 'deletedstring';
-    }
-    
-    
-    
-    else {
+            console.log(firstNum);
+            console.log('hello addition');
+            console.log(secondNum[1]);
+
+            let firstInt = parseFloat(firstNum);
+            let secInt = parseFloat(secondNum[1]);
+
+            let sumAdd = firstInt + secInt;
+
+            console.log(sumAdd);
+
+            currentOperand.textContent = `${sumAdd}`;
+        
+
+
+
+    } else {
     currentOperand.textContent += buttonValue;
     console.log(buttonValue);
     };
 }))
+
+// break ------------------------------------------------------------------
+
+
+function doCalculation(firstNum,operatorSymbol,secondNum){
+    if (operatorSymbol == '+'){
+        console.log(firstNum + secondNum);
+    } else if (operatorSymbol == '÷') {
+        console.log(firstNum/secondNum);
+    } else if (operatorSymbol == '-'){
+        console.log(firstNum - secondNum);
+    } else if (operatorSymbol == '*'){
+        console.log(firstNum * secondNum);
+    } else 
+    console.log('something broke');
+
+}
+
+let resultMultiply = doCalculation(4,'*',2);
+let resultDivide = doCalculation(16,'÷',4);
+let resultMinus = doCalculation(100,'-',2);
+let resultAdd = doCalculation(3,'+',3);
+
+
+function doAddition(firstNum,secondNum){
+    console.log(firstNum + secondNum);
+}
+
+function doSubtraction(firstNum,secondNum){
+    console.log(firstNum - secondNum);
+}
+
+function doMultiplication(firstNum,secondNum){
+    console.log(firstNum * secondNum);
+}
+
+function doDivision(firstNum, secondNum){
+    console.log(firstNum/secondNum);
+}
+
 
 
 
